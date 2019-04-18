@@ -1,0 +1,7 @@
+controller:
+  podAnnotations:
+    fluentbit.io/parser: k8s-nginx-ingress
+
+defaultBackend:
+  podAnnotations:
+    fluentbit.io/parser: k8s-nginx-ingress
