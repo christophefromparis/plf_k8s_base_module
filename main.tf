@@ -2,7 +2,7 @@ data "terraform_remote_state" "infra" {
   backend = "${var.infra_backend}"
   config {
     bucket      = "${var.bucket_backend}"
-    credentials = "${var.credentials_backend}"
+    credentials = "${var.gcp_credentials}"
     key         = "${var.key_backend}"
     region      = "${var.region_backend}"
   }

@@ -12,11 +12,6 @@ variable "prefix_backend" {
   default = ""
 }
 
-variable "credentials_backend" {
-  description = "The gcs credentials who hosted the infra tfstate"
-  default = ""
-}
-
 variable "region_backend" {
   description = "The s3 region who hosted the infra tfstate"
   default = ""
@@ -24,6 +19,19 @@ variable "region_backend" {
 
 variable "key_backend" {
   description = "The s3 key who hosted the infra tfstate"
+  default = ""
+}
+
+# ------------------------
+# ----- GCP specific -----
+# ------------------------
+
+variable "gcp_project" {
+  description = "The GCP project name"
+  default     = ""
+}
+variable "gcp_credentials" {
+  description = "The GCP project credentials"
   default = ""
 }
 
