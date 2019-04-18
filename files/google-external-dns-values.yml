@@ -5,7 +5,3 @@ google:
   project: ${gcp_project}
   serviceAccountSecret: ""
   serviceAccountKey: ${gcp_credentials}
-
-## Limit possible target zones by domain suffixes (optional)
-domainFilters:
-  - ${external-dns-filter}

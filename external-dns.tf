@@ -7,8 +7,7 @@ data "template_file" "external-dns" {
   template = "${file(local.values-filename)}"
 
   vars {
-    external-dns-filter = "${data.terraform_remote_state.infra.fqdn_suffix}"
-    aws_region          = "${data.terraform_remote_state.infra.aws_default_region}"
+    aws_default_region  = "${var.aws_default_region}"
     gcp_project         = "${var.gcp_project}"
     gcp_credentials     = "${var.gcp_credentials}"
   }

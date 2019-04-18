@@ -36,6 +36,15 @@ variable "gcp_credentials" {
 }
 
 # ------------------------
+# ----- AWS specific -----
+# ------------------------
+
+variable "aws_default_region" {
+  description = "The default AWS region"
+  default     = ""
+}
+
+# ------------------------
 # ----- The cluster ------
 # ------------------------
 
