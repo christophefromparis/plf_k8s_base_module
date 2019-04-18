@@ -22,7 +22,7 @@ provider "aws" {
 
 provider "kubernetes" {
   version = "~> 1.5.2"
-  host = "${data.terraform_remote_state.infra.eks-cluster-endpoint}"
+  host = "${var.eks-cluster-endpoint}"
 }
 
 provider "helm" {

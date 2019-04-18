@@ -28,6 +28,14 @@ variable "key_backend" {
 }
 
 # ------------------------
+# ----- The cluster ------
+# ------------------------
+
+variable "eks-cluster-endpoint" {
+  description = "The cluster endpoint"
+}
+
+# ------------------------
 # --- The applications ---
 # ------------------------
 
