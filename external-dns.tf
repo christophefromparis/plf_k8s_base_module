@@ -4,7 +4,7 @@ locals {
 
 # ---  We prepare the external-dns values.yaml ---
 data "template_file" "external-dns" {
-  template = "${file(${local.values-filename})}"
+  template = "${file(local.values-filename)}"
 
   vars {
     external-dns-filter = "${data.terraform_remote_state.infra.fqdn_suffix}"
