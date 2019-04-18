@@ -55,3 +55,14 @@ resource "kubernetes_namespace" "global" {
   }
 }
 
+resource "kubernetes_storage_class" "ssd" {
+  count = "${var.cluster_provider == "google" ? 1 : 0}"
+  metadata {
+    name = "ssd"
+  }
+  storage_provisioner = "kubernetes.io/gce-pd"
+  reclaim_policy = "Retain"
+  parameters {
+    type = "pd-ssd"
+  }
+}

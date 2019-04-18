@@ -52,6 +52,10 @@ variable "cluster_endpoint" {
   description = "The Kubernetes cluster endpoint"
 }
 
+variable "cluster_provider" {
+  description = "The Kubernetes cluster provider (google or aws at the moment)"
+}
+
 # ------------------------
 # --- The applications ---
 # ------------------------
