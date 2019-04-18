@@ -1,5 +1,5 @@
 locals {
-  values-filename = "${path.module}/files/${var.dns_provider}-external-dns-values.yaml"
+  values-filename = "${path.module}/files/${var.dns_provider}-external-dns-values.yml"
 }
 
 # ---  We prepare the external-dns values.yaml ---
