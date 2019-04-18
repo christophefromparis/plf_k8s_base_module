@@ -22,7 +22,7 @@ provider "aws" {
 
 provider "kubernetes" {
   version = "~> 1.5.2"
-  host = "${var.eks-cluster-endpoint}"
+  host = "${var.cluster_endpoint}"
 }
 
 provider "helm" {
