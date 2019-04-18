@@ -1,23 +1,7 @@
-data "terraform_remote_state" "infra" {
-  backend = "${var.infra_backend}"
-  config {
-    bucket      = "${var.bucket_backend}"
-    credentials = "${var.gcp_credentials}"
-    key         = "${var.key_backend}"
-    region      = "${var.region_backend}"
-  }
-}
-
-terraform {
-  required_version = "~> 0.11.13"
-  backend "s3" {
-  }
-}
-
 # --- Providers ---
 provider "aws" {
   version = "~> 2.2.0"
-  region = "${data.terraform_remote_state.infra.aws_default_region}"
+  region = "${var.aws_default_region}"
 }
 
 provider "kubernetes" {
