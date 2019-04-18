@@ -11,7 +11,12 @@ provider "kubernetes" {
 
 provider "helm" {
   version = "~> 0.9.0"
-  service_account = "${kubernetes_service_account.tiller.metadata.0.name}"
+
+  kubernetes {
+    service_account = "${kubernetes_service_account.tiller.metadata.0.name}"
+    cluster_ca_certificate = "${var.cluster_ca_certificate}"
+  }
+
 }
 
 provider "template" {
