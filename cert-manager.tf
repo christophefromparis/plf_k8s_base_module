@@ -26,7 +26,7 @@ resource "helm_release" "cert-manager" {
   name      = "cert-manager"
   chart     = "stable/cert-manager"
   version   = "${lookup(var.helm_version, "cert-manager")}"
-  namespace = "${var.global_namespace}"
+  namespace = "${kubernetes_namespace.global.id}"
 
   set {
     name  = "rbac.create"

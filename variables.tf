@@ -27,22 +27,13 @@ variable "cluster_endpoint" {
 variable "cluster_provider" {
   description = "The Kubernetes cluster provider (google or aws at the moment)"
 }
+variable "namespace_name" {
+  type = "map"
+}
 
 # ------------------------
 # --- The applications ---
 # ------------------------
-variable "global_namespace" {
-  description = "The namespace name who hosted the global component"
-  default     =  "global"
-}
-variable "monitoring_namespace" {
-  description = "The namespace name who hosted the monitoring component"
-  default     =  "monitoring"
-}
-variable "development_namespace" {
-  description = "The namespace name who hosted the developments"
-  default     =  "dev"
-}
 variable "helm_version" {
   type = "map"
 }

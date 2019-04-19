@@ -18,7 +18,7 @@ resource "helm_release" "external-dns" {
   name      = "external-dns"
   chart     = "stable/external-dns"
   version   = "${lookup(var.helm_version, "external-dns")}"
-  namespace = "${var.global_namespace}"
+  namespace = "${kubernetes_namespace.global.id}"
   timeout   = 600
 
   values = [

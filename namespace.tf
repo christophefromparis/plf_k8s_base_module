@@ -6,7 +6,7 @@ resource "kubernetes_namespace" "monitoring" {
       created-by = "Terraform"
     }
 
-    name = "${var.monitoring_namespace}"
+    name = "${lookup(var.namespace_name, "monitoring")}"
   }
 }
 
@@ -17,7 +17,7 @@ resource "kubernetes_namespace" "dev" {
       created-by = "Terraform"
     }
 
-    name = "${var.development_namespace}"
+    name = "${lookup(var.namespace_name, "dev")}"
   }
 }
 
@@ -28,7 +28,7 @@ resource "kubernetes_namespace" "staging" {
       created-by = "Terraform"
     }
 
-    name = "staging"
+    name = "${lookup(var.namespace_name, "stage")}"
   }
 }
 
@@ -39,7 +39,7 @@ resource "kubernetes_namespace" "production" {
       created-by = "Terraform"
     }
 
-    name = "production"
+    name = "${lookup(var.namespace_name, "prod")}"
   }
 }
 
@@ -51,7 +51,7 @@ resource "kubernetes_namespace" "global" {
       "certmanager.k8s.io/disable-validation" = "true"
     }
 
-    name = "${var.global_namespace}"
+    name = "${lookup(var.namespace_name, "global")}"
   }
 }
 

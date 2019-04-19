@@ -7,7 +7,7 @@ data "template_file" "nginx-ingress-template" {
 resource "helm_release" "nginx_controller" {
   name      = "nginx-controller"
   chart     = "stable/nginx-ingress"
-  namespace = "${var.global_namespace}"
+  namespace = "${kubernetes_namespace.global.id}"
   version   = "${lookup(var.helm_version, "nginx-ingress")}"
   timeout   = "600"
 
@@ -50,7 +50,7 @@ resource "helm_release" "nginx_controller" {
   }
   set {
     name  = "controller.publishService.pathOverride"
-    value = "${var.global_namespace}/nginx-controller-nginx-ingress-controller"
+    value = "${kubernetes_namespace.global.id}/nginx-controller-nginx-ingress-controller"
   }
 
   depends_on = ["null_resource.refresh_chart_repo", "helm_release.cert-manager", "helm_release.external-dns"]
