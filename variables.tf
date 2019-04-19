@@ -70,5 +70,3 @@ variable "aws_account" {
   description = "The AWS Veolia account"
   default     = "665901990640"
 }
-
-variable "cluster_ca_certificate" {}
