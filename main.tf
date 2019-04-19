@@ -4,10 +4,10 @@ provider "aws" {
   region = "${var.aws_default_region}"
 }
 
-/*provider "kubernetes" {
+provider "kubernetes" {
   version = "~> 1.5.2"
   host    = "${var.cluster_endpoint}"
-}*/
+}
 
 provider "helm" {
   version = "~> 0.9.0"
