@@ -2,6 +2,19 @@ locals {
   values-filename = "${path.module}/files/${var.dns_provider}-external-dns-values.yaml"
 }
 
+resource "kubernetes_secret" "gcp-credentials" {
+  count = "${var.cluster_provider == "google" ? 1 : 0}"
+  metadata {
+    name = "gcp-credentials"
+  }
+
+  data {
+    credentials.json = "${file("${path.module}/secrets/gcp-credentials.json")}"
+  }
+
+  type = "generic"
+}
+
 # ---  We prepare the external-dns values.yaml ---
 data "template_file" "external-dns" {
   template = "${file(local.values-filename)}"
@@ -9,7 +22,7 @@ data "template_file" "external-dns" {
   vars {
     aws_default_region  = "${var.aws_default_region}"
     gcp_project         = "${var.gcp_project}"
-    gcp_credentials     = "${var.gcp_credentials}"
+    gcp_credentials     = "${kubernetes_secret.gcp-credentials.metadata.name}"
   }
 }
 
