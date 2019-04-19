@@ -6,6 +6,8 @@ resource "null_resource" "create-crd" {
   provisioner "local-exec" {
     command = "kubectl apply -f https://raw.githubusercontent.com/jetstack/cert-manager/release-0.6/deploy/manifests/00-crds.yaml"
   }
+
+  depends_on = ["kubernetes_namespace.dev"]
 }
 
 # ---  We prepare the ClusterIssuer.yaml ---
