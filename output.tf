@@ -6,6 +6,6 @@ output "monitoring_ns" {
   value = "${kubernetes_namespace.monitoring.id}"
 }
 
-output "test" {
-  value = "${var.gcp_credentials}"
+output "global_ns" {
+  value = "${kubernetes_namespace.global.id}"
 }
