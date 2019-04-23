@@ -6,7 +6,7 @@ variable "gcp_project" {
   default     = ""
 }
 variable "gcp_credentials" {
-  description = "The GCP project credentials"
+  description = "The GCP project credentials JSON file "
   default = ""
 }
 
