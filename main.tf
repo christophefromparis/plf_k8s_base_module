@@ -4,11 +4,6 @@ provider "aws" {
   region = "${var.aws_default_region}"
 }
 
-provider "helm" {
-  version = "~> 0.9.0"
-  service_account = "${kubernetes_service_account.tiller.metadata.0.name}"
-}
-
 provider "template" {
   version = "~> 2.1"
 }
