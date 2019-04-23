@@ -5,7 +5,8 @@ locals {
 resource "kubernetes_secret" "gcp-credentials" {
   count = "${var.cluster_provider == "google" ? 1 : 0}"
   metadata {
-    name = "gcp-credentials"
+    name      = "gcp-credentials"
+    namespace = "${kubernetes_namespace.global.id}"
   }
 
   data {

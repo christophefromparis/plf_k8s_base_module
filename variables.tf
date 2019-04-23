@@ -25,6 +25,7 @@ variable "cluster_provider" {
   description = "The Kubernetes cluster provider (google or aws at the moment)"
 }
 variable "namespace_name" {
+  description = "The default namespace name"
   type = "map"
 }
 
