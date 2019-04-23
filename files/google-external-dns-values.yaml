@@ -1,7 +1,23 @@
-## The DNS provider where the DNS records will be created
+sources:
+- ingress
+
 provider: google
 
 google:
   project: ${gcp_project}
-  serviceAccountSecret: ""
-  serviceAccountKey: ${gcp_credentials}
+  serviceAccountSecret: ${gcp_credentials}
+
+txtOwnerId: "k8s"
+
+## Limit external-dns resources
+resources:
+  limits:
+    memory: 50Mi
+  requests:
+    memory: 50Mi
+    cpu: 10m
+
+## ensure RBAC is enabled
+rbac:
+  create: true
+  apiVersion: v1

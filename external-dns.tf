@@ -10,7 +10,7 @@ resource "kubernetes_secret" "gcp-credentials" {
   }
 
   data {
-    credentials.json = "${var.gcp_credentials}"
+    credentials.json = "${file("${path.module}/secrets/credentials.json")}"
   }
 
   type = "generic"
@@ -23,7 +23,7 @@ data "template_file" "external-dns" {
   vars {
     aws_default_region  = "${var.aws_default_region}"
     gcp_project         = "${var.gcp_project}"
-    gcp_credentials     = "${kubernetes_secret.gcp-credentials.metadata.name}"
+    gcp_credentials     = "${kubernetes_secret.gcp-credentials.metadata.0.name}"
   }
 }
 
