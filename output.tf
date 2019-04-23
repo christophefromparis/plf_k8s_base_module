@@ -13,3 +13,7 @@ output "aws_account" {
 /*output "bitbucket_data" {
   value = "${data.kubernetes_secret.bitbucket-pipeline.data}"
 }*/
+
+output "monitoring_ns" {
+  value = "${kubernetes_namespace.monitoring.id}"
+}
