@@ -9,7 +9,7 @@ resource "kubernetes_secret" "gcp-credentials" {
   }
 
   data {
-    credentials.json = "${file("${path.module}/secrets/gcp-credentials.json")}"
+    credentials.json = "${var.gcp_credentials}"
   }
 
   type = "generic"
