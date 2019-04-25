@@ -23,8 +23,10 @@ data "template_file" "external-dns" {
   vars {
     aws_default_region  = "${var.aws_default_region}"
     gcp_project         = "${var.gcp_project}"
-    gcp_credentials     = "${kubernetes_secret.gcp-credentials.metadata.0.name}"
+    gcp_credentials     = "gcp-credentials"
   }
+
+  depends_on = ["kubernetes_secret.gcp-credentials"]
 }
 
 # --- We install the external DNS manager ---
