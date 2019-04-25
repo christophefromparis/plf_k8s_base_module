@@ -21,3 +21,7 @@ output "staging_ns" {
 output "production_ns" {
   value = "${kubernetes_namespace.production.id}"
 }
+
+output "stable_helm_repository" {
+  value = "${data.helm_repository.stable.name}"
+}
