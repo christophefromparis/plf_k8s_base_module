@@ -17,6 +17,10 @@ variable "aws_default_region" {
   description = "The default AWS region"
   default     = ""
 }
+variable "eks_node_arn" {
+  description = ""
+  default     = ""
+}
 
 # ------------------------
 # ----- The cluster ------
