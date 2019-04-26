@@ -32,7 +32,7 @@ variable "namespace_name" {
   description = "The default namespace name"
   type = "map"
 }
-
+variable "tiller_is_ready" {}
 # ------------------------
 # --- The applications ---
 # ------------------------

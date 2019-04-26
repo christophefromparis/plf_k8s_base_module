@@ -52,6 +52,9 @@ resource "helm_release" "nginx_controller" {
     name  = "controller.publishService.pathOverride"
     value = "${kubernetes_namespace.global.id}/nginx-controller-nginx-ingress-controller"
   }
-
+  set {
+    name = "workaround"
+    value = "${var.tiller_is_ready}"
+  }
   depends_on = ["null_resource.refresh_chart_repo", "helm_release.cert-manager", "helm_release.external-dns"]
 }

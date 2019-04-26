@@ -42,7 +42,10 @@ resource "helm_release" "cert-manager" {
     name  = "ingressShim.defaultIssuerKind"
     value = "ClusterIssuer"
   }
-
+  set {
+    name = "workaround"
+    value = "${var.tiller_is_ready}"
+  }
   provisioner "local-exec" {
     command = "kubectl create -f -<<EOF\n${data.template_file.cluster-isssuer.rendered}\nEOF"
   }
