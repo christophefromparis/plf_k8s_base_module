@@ -29,6 +29,7 @@ resource "helm_release" "cert-manager" {
   chart     = "stable/cert-manager"
   version   = "${lookup(var.helm_version, "cert-manager")}"
   namespace = "${kubernetes_namespace.global.id}"
+  timeout   = "1200"
 
   set {
     name  = "rbac.create"
@@ -41,10 +42,6 @@ resource "helm_release" "cert-manager" {
   set {
     name  = "ingressShim.defaultIssuerKind"
     value = "ClusterIssuer"
-  }
-  set {
-    name = "workaround"
-    value = "${var.tiller_is_ready}"
   }
   provisioner "local-exec" {
     command = "kubectl create -f -<<EOF\n${data.template_file.cluster-isssuer.rendered}\nEOF"

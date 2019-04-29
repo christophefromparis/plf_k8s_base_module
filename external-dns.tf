@@ -35,16 +35,11 @@ resource "helm_release" "external-dns" {
   chart     = "stable/external-dns"
   version   = "${lookup(var.helm_version, "external-dns")}"
   namespace = "${kubernetes_namespace.global.id}"
-  timeout   = 600
+  timeout   = 1200
 
   values = [
     "${data.template_file.external-dns.rendered}"
   ]
-
-  set {
-    name = "workaround"
-    value = "${var.tiller_is_ready}"
-  }
 
   depends_on = ["null_resource.refresh_chart_repo"]
 }

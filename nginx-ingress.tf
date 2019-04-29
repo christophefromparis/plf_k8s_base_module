@@ -9,7 +9,7 @@ resource "helm_release" "nginx_controller" {
   chart     = "stable/nginx-ingress"
   namespace = "${kubernetes_namespace.global.id}"
   version   = "${lookup(var.helm_version, "nginx-ingress")}"
-  timeout   = "600"
+  timeout   = "1200"
 
   values = [
     "${data.template_file.nginx-ingress-template.rendered}"
@@ -51,10 +51,6 @@ resource "helm_release" "nginx_controller" {
   set {
     name  = "controller.publishService.pathOverride"
     value = "${kubernetes_namespace.global.id}/nginx-controller-nginx-ingress-controller"
-  }
-  set {
-    name = "workaround"
-    value = "${var.tiller_is_ready}"
   }
   depends_on = ["null_resource.refresh_chart_repo", "helm_release.cert-manager", "helm_release.external-dns"]
 }
