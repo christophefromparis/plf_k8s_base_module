@@ -40,7 +40,7 @@ variable "helm_version" {
 }
 variable "letsencrypt_issuer_email" {
   description = "The email provided to letsencrypt"
-  default     = "christophe.cosnefroy.ext@veolia.com"
+  default     = "christophe.cosnefroy@yelty.fr"
 }
 variable "letsencrypt_env" {
   description = "The Let'sEncrypt environement"
@@ -68,6 +68,6 @@ variable "deploy_role_name" {
   default     = "deploy"
 }
 variable "aws_account" {
-  description = "The AWS Veolia account"
-  default     = "665901990640"
+  description = "The AWS account"
+  default     = "xxxxxxxxxx"
 }
